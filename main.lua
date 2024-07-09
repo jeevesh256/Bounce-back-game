@@ -6,6 +6,8 @@ function love.load()
 
     sound = love.audio.newSource("coin", "static")
 
+    math.randomseed(os.time())
+
     player = {}
     player.width = 150
     player.height = 30

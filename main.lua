@@ -4,9 +4,8 @@ function love.load()
     window.height = love.graphics.getHeight()
     window.width = love.graphics.getWidth()
 
-    sound = love.audio.newSource("coin", "static")
-
     math.randomseed(os.time())
+    sound = love.audio.newSource("coin", "static")
 
     player = {}
     player.width = 150

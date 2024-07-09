@@ -1,5 +1,5 @@
 function love.load()
-    love.window.setTitle("Squash")
+    love.window.setTitle("Bounce back")
     window = {}
     window.height = love.graphics.getHeight()
     window.width = love.graphics.getWidth()
@@ -26,7 +26,7 @@ function love.load()
 end
 
 function love.update(dt)
-
+    --player movement
     if love.keyboard.isDown("left") then
             player.x = player.x - player.speed * dt
     end
@@ -42,7 +42,7 @@ function love.update(dt)
         player.x = window.width - player.width
     end
 
-    if gameState == "play" or gameState == "fire" then
+    if gameState == "play" then
         ball.x = ball.x + ball.dx * dt
         ball.y = ball.y + ball.dy * dt
     end
@@ -92,8 +92,6 @@ function love.keypressed(key)
         gameState = "play"
     elseif key == "r" then
         gameState = "reset"
-    elseif key == "f" then
-        gameState = "fire"
     elseif key == "space" and gameState == "pause" then
         gameState = "play"
     elseif key == "space" then
@@ -108,12 +106,5 @@ end
 function love.draw()
     love.graphics.setColor(1, 1, 1)
     love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
-
-    if gameState == "fire" then
-        love.graphics.setColor(1, 0.5, 0)
-        love.graphics.circle("fill", ball.x, ball.y, ball.radius)
-    else
-        love.graphics.setColor(1, 1, 1)
-        love.graphics.circle("fill", ball.x, ball.y, ball.radius)
-    end
+    love.graphics.circle("fill", ball.x, ball.y, ball.radius)
 end

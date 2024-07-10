@@ -69,6 +69,8 @@ function love.update(dt)
     if isColliding(ball, player) then
         sound:stop()
         sound:play()
+
+        ball.y = player.y -ball.radius
         ball.dy = -ball.dy * 1.2
 
         local angleAdjust = math.rad(math.random(-30, 30))
